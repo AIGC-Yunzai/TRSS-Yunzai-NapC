@@ -61,9 +61,9 @@
 
 ```bash
 # 在你的 TRSS 根目录执行
-git remote set-url origin https://github.com/AIGC-Yunzai/TRSS-Yunzai-Lagrange.git
+git remote set-url origin https://github.com/AIGC-Yunzai/TRSS-Yunzai-NapC.git
 # 或使用 Git 代理：
-# git remote set-url origin https://ghfast.top/https://github.com/AIGC-Yunzai/TRSS-Yunzai-Lagrange.git
+# git remote set-url origin https://ghfast.top/https://github.com/AIGC-Yunzai/TRSS-Yunzai-NapC.git
 git fetch --all
 git reset --hard origin/main
 pnpm i
@@ -122,7 +122,7 @@ bash <(curl -sL https://gitee.com/Misaka21011/Yunzai-Bot-Shell/raw/master/instal
 请根据网络情况选择使用 GitHub 或 Gitee 安装
 
 ```sh
-git clone https://github.com/AIGC-Yunzai/TRSS-Yunzai-Lagrange.git ./TRSS-Yunzai
+git clone https://github.com/AIGC-Yunzai/TRSS-Yunzai-NapC.git ./TRSS-Yunzai
 cd TRSS-Yunzai
 ```
 
