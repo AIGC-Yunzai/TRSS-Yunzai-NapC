@@ -1411,7 +1411,7 @@ Bot.adapter.push(
       Bot.em(`${data.post_type}.${data.notice_type}.${data.sub_type}`, data)
     }
 
-    makeRequest(data) {
+    async makeRequest(data) {
       switch (data.request_type) {
         case "friend":
           Bot.makeLog(
@@ -1438,6 +1438,15 @@ Bot.adapter.push(
           break
         default:
           Bot.makeLog("warn", `未知请求：${logger.magenta(data.raw)}`, data.self_id)
+      }
+
+      if (data.user_id && !data.nickname) {
+        try {
+          const info = await this.getFriendInfo(data)
+          data.nickname ||= info?.nickname
+        } catch (err) {
+          Bot.makeLog("debug", [`获取请求用户信息失败`, err], data.self_id)
+        }
       }
 
       data.bot.request_list.push(data)
