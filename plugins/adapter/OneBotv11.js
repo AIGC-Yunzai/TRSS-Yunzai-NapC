@@ -646,10 +646,10 @@ Bot.adapter.push(
         `${data.self_id} => ${data.user_id}`,
         true,
       )
+      const uploadFile = (await this.makeFile(file, { file: true })).replace("file://", "")
       return data.bot.sendApi("upload_private_file", {
         user_id: data.user_id,
-        file: (await this.makeFile(file, { file: true })).replace("file://", ""), // 2025年9月27日 已修复 拉格朗日，file 可以使用 base64 了 // 匹配拉格朗日，直接使用文件路径
-        file,
+        file: uploadFile, // 2025年9月27日 已修复 拉格朗日，file 可以使用 base64 了 // 匹配拉格朗日，直接使用文件路径
         name,
       })
     }
@@ -661,11 +661,11 @@ Bot.adapter.push(
         `${data.self_id} => ${data.group_id}`,
         true,
       )
+      const uploadFile = (await this.makeFile(file, { file: true })).replace("file://", "")
       return data.bot.sendApi("upload_group_file", {
         group_id: data.group_id,
         folder,
-        file: (await this.makeFile(file, { file: true })).replace("file://", ""), // 2025年9月27日 已修复 拉格朗日，file 可以使用 base64 了 // 匹配拉格朗日，直接使用文件路径
-        file,
+        file: uploadFile, // 2025年9月27日 已修复 拉格朗日，file 可以使用 base64 了 // 匹配拉格朗日，直接使用文件路径
         name,
       })
     }
