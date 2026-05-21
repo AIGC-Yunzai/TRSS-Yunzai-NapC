@@ -6,12 +6,12 @@
 
 ## 已调整适配器适配
 
-### Group:
-
-| method             | api                   | about                          |
-| ------------------ | --------------------- | ------------------------------ |
-| pokeMember         | group_poke            | 群聊戳一戳                     |
-| getGroupMsgHistory | get_group_msg_history | 适配 message_id 以获取历史消息 |
+| method                       | api                    | about                          |
+| ---------------------------- | ---------------------- | ------------------------------ |
+| e.group.pokeMember           | group_poke             | 群聊戳一戳                     |
+| e.group.getGroupMsgHistory   | get_group_msg_history  | 适配 message_id 以获取历史消息 |
+| e.friend.getFriendMsgHistory | get_friend_msg_history | 适配 message_id 以获取历史消息 |
+| e.friend.getSimpleInfo       | get_stranger_info      | icqq 格式获取非好友信息        |
 
 <!-- | ~~sendFriendFile~~  | ~~upload_private_file~~ | ~~发送文件，适配 file 仅支持本地Path~~ |
 | ~~sendGroupFile~~   | ~~upload_group_file~~   | ~~发送文件，适配 file 仅支持本地Path~~ |
@@ -21,19 +21,12 @@
 ~~- 已经从源头（Lagrange.Onebot）上修复了 `upload_private_file` `upload_group_file` 文件 Base64 发送~~
 ~~- 下载地址：[呆毛 Fork 版 Lagrange.Onebot](https://github.com/misaka20002/Lagrange.Core)~~ -->
 
-### Member:
-
-| method              | api                    | about                          |
-| ------------------- | ---------------------- | ------------------------------ |
-| getFriendMsgHistory | get_friend_msg_history | 适配 message_id 以获取历史消息 |
-| getSimpleInfo       | get_stranger_info      | icqq 获取非好友信息            |
-
 ## 已调整参数
 
-| parameter                            | about                          |
-| ------------------------------------ | ------------------------------ |
-| e.source                             | icqq 引用消息参数 e.source.seq |
-| {request_type,sub_type,nickname}[^1] | 入群申请补充用户昵称           |
+| parameter                            | about                 |
+| ------------------------------------ | --------------------- |
+| e.source.seq                         | icqq 格式引用消息参数 |
+| {request_type,sub_type,nickname}[^1] | 入群申请补充用户昵称  |
 
 ## 已调整逻辑
 
@@ -43,12 +36,14 @@
 
 ## 已增加的 NapCat Onebot Api
 
-| method                | api               | about                |
-| --------------------- | ----------------- | -------------------- |
-| setEmojiLike[^1]      | setEmojiLike      | 贴标签(设置表情点赞) |
-| getAiCharacters[^1]   | getAiCharacters   | 获取群AI音色信息     |
-| sendGroupAiRecord[^1] | sendGroupAiRecord | 获发送群AI语音       |
-| getLocalFileInfo[^1]  | getLocalFileInfo  | 获取文件信息         |
+| method                        | api                  | about                 |
+| ----------------------------- | -------------------- | --------------------- |
+| e.group.setEmojiLike[^1]      | setEmojiLike         | 贴标签(设置表情点赞)  |
+| e.group.getAiCharacters[^1]   | getAiCharacters      | 获取群AI音色信息      |
+| e.group.sendGroupAiRecord[^1] | sendGroupAiRecord    | 获发送群AI语音        |
+| e.group.getLocalFileInfo[^1]  | getLocalFileInfo     | 获取文件信息          |
+| e.group.getFileUrl[^1]        | get_group_file_url   | icqq 格式获取文件信息 |
+| e.friend.getFileUrl[^1]       | get_private_file_url | icqq 格式获取文件信息 |
 
 [^1]: 由 [@127Wzc](https://github.com/127Wzc) 贡献添加
 
@@ -192,17 +187,17 @@ bash <(curl -L https://raw.gitcode.com/TimeRainStarSky/Yunzai/raw/main/lib/tools
 
 </details>
 
-| 参数 | 描述 | 默认值 |
-| ---- | ---- | ------ |
-| DIR | 安装文件夹 | $HOME/Yunzai |
-| CMD | 启动命令 | tsyz |
-| CMDPATH | 命令文件夹 | /usr/local/bin |
-| DKNAME | 容器名 | Yunzai |
-| DKURL | Docker 源 | docker.m.daocloud.io |
-| GITURL | GIT 源 | https://git.trss.me/Yunzai |
-| APTURL | APT 源 | mirrors.ustc.edu.cn |
-| APTDEP | APT 依赖 | chromium fonts-lxgw-wenkai fonts-noto-color-emoji |
-| NPMURL | NPM 源 | https://registry.npmmirror.com |
+| 参数    | 描述       | 默认值                                            |
+| ------- | ---------- | ------------------------------------------------- |
+| DIR     | 安装文件夹 | $HOME/Yunzai                                      |
+| CMD     | 启动命令   | tsyz                                              |
+| CMDPATH | 命令文件夹 | /usr/local/bin                                    |
+| DKNAME  | 容器名     | Yunzai                                            |
+| DKURL   | Docker 源  | docker.m.daocloud.io                              |
+| GITURL  | GIT 源     | https://git.trss.me/Yunzai                        |
+| APTURL  | APT 源     | mirrors.ustc.edu.cn                               |
+| APTDEP  | APT 依赖   | chromium fonts-lxgw-wenkai fonts-noto-color-emoji |
+| NPMURL  | NPM 源     | https://registry.npmmirror.com                    |
 
 - 参数修改方法
 
