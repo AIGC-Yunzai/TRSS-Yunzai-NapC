@@ -159,10 +159,6 @@ Bot.adapter.push(
       return msg
     }
 
-    async getPrivateFileUrl(data, file_id) {
-      return (await data.bot.sendApi("get_private_file_url", { file_id })).url
-    }
-
     sendGroupMsg(data, msg) {
       return this.sendMsg(
         msg,
