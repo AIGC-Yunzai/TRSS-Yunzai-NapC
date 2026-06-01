@@ -664,6 +664,15 @@ Bot.adapter.push(
       })
     }
 
+    async getPrivateFileUrl(data, file_id) {
+      return (
+        await data.bot.sendApi("get_private_file_url", {
+          user_id: data.user_id,
+          file_id,
+        })
+      ).url
+    }
+
     async sendGroupFile(data, file, folder, name = path.basename(file)) {
       Bot.makeLog(
         "info",
