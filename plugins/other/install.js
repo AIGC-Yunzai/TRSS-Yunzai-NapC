@@ -31,7 +31,7 @@ const list = {
   "ap-plugin": GitHubMirror + "https://github.com/misaka20002/ap-plugin.git",
   "xiaofei-plugin": GitHubMirror + "https://github.com/misaka20002/xiaofei-plugin.git",
   "siliconflow-plugin": GitHubMirror + "https://github.com/AIGC-Yunzai/siliconflow-plugin.git",
-  "hapi_connector-plugin": GitHubMirror + "https://github.com/AIGC-Yunzai/hapi_connector-plugin.git",  
+  "hapi_connector-plugin": GitHubMirror + "https://github.com/AIGC-Yunzai/hapi_connector-plugin.git",
 }
 const map = {}
 for (const i in list) map[i.replace(/-[Pp]lugin$/, "")] = i
