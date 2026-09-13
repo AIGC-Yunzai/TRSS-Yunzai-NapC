@@ -175,38 +175,6 @@ Bot.adapter.push(
       return msg
     }
 
-    setEmojiLike(data, message_id, emoji_id) {
-      Bot.makeLog("info", `回应群消息：${this.makeLog(message_id)}`, `${data.emoji_id}`, true)
-      return data.bot.sendApi("set_msg_emoji_like", {
-        emoji_id: emoji_id,
-        message_id: message_id,
-      })
-    }
-
-    getAiCharacters(data, type) {
-      Bot.makeLog("info", `获取群${this.makeLog(data.group_id)}AI音色信息`, `${type}`, true)
-      return data.bot.sendApi("get_ai_characters", {
-        chat_type: type,
-        group_id: data.group_id,
-      })
-    }
-
-    sendGroupAiRecord(data, character_id, text) {
-      Bot.makeLog("info", `发送${this.makeLog(character_id)}语音`, `${data.self_id} => ${data.group_id}`, true)
-      return data.bot.sendApi("send_group_ai_record", {
-        character: character_id,
-        group_id: data.group_id,
-        text: text
-      })
-    }
-
-    async getLocalFileInfo(data, file_id) {
-      const msg = (await data.bot.sendApi("get_file", { file_id })).data
-      if (msg?.message)
-        msg.message = this.parseMsg(msg.message)
-      return msg
-    }
-
     sendGroupMsg(data, msg) {
       return this.sendMsg(
         msg,
