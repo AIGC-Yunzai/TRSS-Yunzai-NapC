@@ -1,3 +1,4 @@
+diff --git a/index.js b/index.js
 --- a/index.js
 +++ b/index.js
 @@ -37,1 +37,1 @@
@@ -15,5 +16,6 @@
 -  if (hasBrotliSupport) {
 @@ -69,1 +68,0 @@
 -  }
-@@ -218,0 +216,1 @@
+@@ -218,1 +216,2 @@
 +: method === 'zstd' ? zlib.createZstdCompress(opts.zstd)
+           : zlib.createDeflate(opts)
