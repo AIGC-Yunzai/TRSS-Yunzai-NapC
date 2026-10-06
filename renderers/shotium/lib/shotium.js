@@ -156,7 +156,7 @@ export default class Shotium extends Renderer {
    * @param name 模板名（plugin/path）
    * @param data 模板参数
    * @param data.tplFile 模板路径，必传
-   * @param data.saveId  生成 html 名称，为空 name 代替
+   * @param data.saveId  生成 html 名称，未指定时使用 name 的最后一段
    * @param data.imgType  生成图片类型：jpeg，png，webp
    * @param data.quality  图片质量 0-100，jpeg / webp 可传，默认 90
    * @param data.omitBackground  隐藏默认的白色背景，背景透明。jpeg 无 alpha 通道会忽略
@@ -167,6 +167,11 @@ export default class Shotium extends Renderer {
    * @return img 不做 segment 包裹；multiPage 时返回数组；失败返回 false
    */
   async screenshot(name, data = {}) {
+    return Renderer.withTpl(name, data, () => this.captureScreenshot(name, data))
+  }
+
+  /** 执行已取得模板路径锁的截图 */
+  async captureScreenshot(name, data) {
     const savePath = this.dealTpl(name, data)
     if (!savePath) return false
 
